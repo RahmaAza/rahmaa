@@ -126,7 +126,7 @@ if (isset($_POST['login'])) {
     <div class="login-blob text-center shadow-lg">
         <div class="mb-4">
             <span class="logo-bubble">🚗</span>
-            <h3 class="fw-bold text-dark">Welcome Back</h3>
+            <h3 class="fw-bold text-dark">Welcome</h3>
             <p class="text-muted small">Car Sales Management System</p>
         </div>
         

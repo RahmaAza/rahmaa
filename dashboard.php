@@ -127,9 +127,9 @@ $jumlah_transaksi = 12; // DATA DUMMY UNTUK DEMO TAMPILAN
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom" style="position: relative; z-index: 1000;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">CAR SALES PRO</a>
+        <a class="navbar-brand fw-bold" href="#">CAR SALES PRO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -142,7 +142,7 @@ $jumlah_transaksi = 12; // DATA DUMMY UNTUK DEMO TAMPILAN
             </ul>
             <div class="d-flex align-items-center">
                 <span class="text-white me-3 fw-light">Halo, <strong><?= ucfirst($username); ?></strong></span>
-                <a href="logout.php" class="btn btn-logout btn-sm">Keluar</a>
+                <a href="logout.php" class="btn btn-logout btn-sm px-4 shadow-sm" style="position: relative; z-index: 1001;">Keluar</a>
             </div>
         </div>
     </div>
