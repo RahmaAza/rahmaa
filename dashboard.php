@@ -137,7 +137,7 @@ $jumlah_transaksi = 12; // DATA DUMMY UNTUK DEMO TAMPILAN
             <ul class="navbar-nav mx-auto align-items-center">
                 <li class="nav-item"><a class="nav-link active" href="dashboard.php">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="jenis_mobil.php">Jenis Mobil</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Data Pembeli</a></li>
+                <li class="nav-item"><a class="nav-link" href="data_pembeli.php">Data Pembeli</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Transaksi</a></li>
             </ul>
             <div class="d-flex align-items-center">
