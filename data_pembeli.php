@@ -21,6 +21,7 @@ $result = mysqli_query($conn, $query);
     <title>Data Pembeli - Colorful Bubble</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         :root {
             --primary-bg: #6c5ce7;
@@ -71,7 +72,6 @@ $result = mysqli_query($conn, $query);
 
         .container { z-index: 1; }
 
-        /* Kartu Utama Bergelembung */
         .data-card {
             background: var(--card-glass);
             backdrop-filter: blur(15px);
@@ -95,7 +95,6 @@ $result = mysqli_query($conn, $query);
             text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
         }
 
-        /* Table Styling */
         .table-container {
             background: white;
             border-radius: 30px;
@@ -121,7 +120,6 @@ $result = mysqli_query($conn, $query);
             border-bottom: 1px solid #f1f2f6;
         }
 
-        /* Button Styling */
         .btn-add {
             background: #2ed573;
             color: white;
@@ -146,14 +144,25 @@ $result = mysqli_query($conn, $query);
             padding: 5px 15px;
         }
 
-        .btn-logout {
+        /* Tombol Dashboard Baru */
+        .btn-dashboard {
             color: white;
             text-decoration: none;
             float: right;
             font-weight: 600;
-            background: rgba(255,0,0,0.4);
-            padding: 5px 15px;
+            background: #6c5ce7;
+            padding: 8px 20px;
             border-radius: 20px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-dashboard:hover {
+            background: #a29bfe;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
         }
     </style>
 </head>
@@ -172,7 +181,10 @@ $result = mysqli_query($conn, $query);
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="data-card">
-                <a href="logout.php" class="btn-logout">Keluar</a>
+                <a href="dashboard.php" class="btn-dashboard">
+                   <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                </a>
+                
                 <h2>📋 Data Pembeli Car Sales</h2>
                 
                 <div class="d-flex justify-content-between align-items-center">
