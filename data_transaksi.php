@@ -28,6 +28,7 @@ $result = mysqli_query($conn, $query);
     <title>Bubble CRUD System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         body {
             font-family: 'Fredoka', sans-serif;
@@ -57,11 +58,19 @@ $result = mysqli_query($conn, $query);
         .btn-delete { background: #ff7675; }
         .btn-action:hover { opacity: 0.8; color: white; transform: scale(1.1); }
         
-        .btn-add {
-            background: white; color: #6c5ce7; border-radius: 30px;
+        .btn-header {
+            background: white; border-radius: 30px;
             padding: 10px 25px; font-weight: 700; text-decoration: none;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
+        .btn-header:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); opacity: 0.9; }
+        
+        .btn-add { color: #6c5ce7; }
+        .btn-dashboard { color: #ff7675; }
     </style>
 </head>
 <body>
@@ -69,7 +78,14 @@ $result = mysqli_query($conn, $query);
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>📊 DATA TRANSAKSI</h2>
-        <a href="transaksi.php" class="btn-add">➕ Tambah Baru</a>
+        <div class="d-flex gap-2">
+            <a href="dashboard.php" class="btn-header btn-dashboard">
+                <i class="bi bi-house-door-fill"></i> Dashboard
+            </a>
+            <a href="transaksi.php" class="btn-header btn-add">
+                <i class="bi bi-plus-circle-fill"></i> Tambah Baru
+            </a>
+        </div>
     </div>
 
     <div class="data-card">
@@ -85,20 +101,24 @@ $result = mysqli_query($conn, $query);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($row = mysqli_fetch_assoc($result)): ?>
-                    <tr>
-                        <td><?= date('d/m/Y', strtotime($row['tgl_transaksi'])); ?></td>
-                        <td><span class="text-primary"><?= $row['nama_pembeli']; ?></span></td>
-                        <td><?= $row['nama_mobil']; ?></td>
-                        <td><b style="color: #2d3436;">Rp<?= number_format($row['total_bayar']); ?></b></td>
-                        <td>
-                            <a href="edit_transaksi.php?id=<?= $row['id_transaksi']; ?>" class="btn-action btn-edit">EDIT ✏️</a>
-                            <a href="data_transaksi.php?hapus=<?= $row['id_transaksi']; ?>" 
-                               class="btn-action btn-delete" 
-                               onclick="return confirm('Hapus transaksi ini? 🥺')">HAPUS 🗑️</a>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
+                    <?php if(mysqli_num_rows($result) > 0): ?>
+                        <?php while($row = mysqli_fetch_assoc($result)): ?>
+                        <tr>
+                            <td><?= date('d/m/Y', strtotime($row['tgl_transaksi'])); ?></td>
+                            <td><span class="text-primary"><?= $row['nama_pembeli']; ?></span></td>
+                            <td><?= $row['nama_mobil']; ?></td>
+                            <td><b style="color: #2d3436;">Rp<?= number_format($row['total_bayar']); ?></b></td>
+                            <td>
+                                <a href="edit_transaksi.php?id=<?= $row['id_transaksi']; ?>" class="btn-action btn-edit">EDIT ✏️</a>
+                                <a href="data_transaksi.php?hapus=<?= $row['id_transaksi']; ?>" 
+                                   class="btn-action btn-delete" 
+                                   onclick="return confirm('Hapus transaksi ini? 🥺')">HAPUS 🗑️</a>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <tr><td colspan="5" class="text-muted">Belum ada data transaksi.. ☁️</td></tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
