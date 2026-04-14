@@ -45,7 +45,6 @@ $result = mysqli_query($conn, "SELECT * FROM mobil ORDER BY id_mobil DESC");
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Dasar & Background Animasi */
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(45deg, #f06, #3cf, #f06);
@@ -54,14 +53,11 @@ $result = mysqli_query($conn, "SELECT * FROM mobil ORDER BY id_mobil DESC");
             min-height: 100vh;
             color: #333;
         }
-
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* Navbar Gelembung Panjang */
         .navbar-custom {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(15px);
@@ -70,48 +66,20 @@ $result = mysqli_query($conn, "SELECT * FROM mobil ORDER BY id_mobil DESC");
             border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 10px 30px;
         }
-
-        /* --- EFEK GELEMBUNG (BLOB) UTAMA --- */
         .blob-card {
             background: rgba(255, 255, 255, 0.95);
             border: none;
-            /* Border radius organik untuk efek gelembung */
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border-radius: 30px;
             padding: 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.5s ease-in-out;
-            /* Animasi gelembung bergerak pelan */
-            animation: morph 10s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
-
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            33% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
-            66% { border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        }
-
-        .blob-card:hover {
-            transform: scale(1.02);
-            background: #ffffff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        /* Input & Button Bulat (Bubble Style) */
         .bubble-input {
             border-radius: 50px;
             padding: 12px 20px;
             border: 2px solid #eee;
             margin-bottom: 15px;
-            transition: 0.3s;
         }
-
-        .bubble-input:focus {
-            border-color: #3cf;
-            box-shadow: 0 0 10px rgba(51, 204, 255, 0.2);
-            outline: none;
-        }
-
         .btn-bubble {
             border-radius: 50px;
             padding: 12px 25px;
@@ -119,18 +87,7 @@ $result = mysqli_query($conn, "SELECT * FROM mobil ORDER BY id_mobil DESC");
             background: linear-gradient(to right, #f06, #3cf);
             border: none;
             color: white;
-            transition: 0.3s;
         }
-
-        .btn-bubble:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 0, 102, 0.3);
-        }
-
-        .table-responsive {
-            border-radius: 20px;
-        }
-
         .badge-price {
             background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
@@ -193,7 +150,7 @@ $result = mysqli_query($conn, "SELECT * FROM mobil ORDER BY id_mobil DESC");
                                         <span class="fw-bold"><?= $row['nama_mobil']; ?></span><br>
                                         <small class="badge bg-info text-dark rounded-pill" style="font-size: 10px;"><?= $row['jenis_tipe']; ?></small>
                                     </td>
-                                    <td><?= $row['tahun_keluar']; ?></td>
+                                    <td><?= $row['tahun_keluar'] ?? '-'; ?></td>
                                     <td><span class="badge-price">Rp <?= number_format($row['harga_mobil'], 0, ',', '.'); ?></span></td>
                                     <td class="text-center">
                                         <a href="edit_mobil.php?id=<?= $row['id_mobil']; ?>" class="btn btn-sm btn-outline-warning rounded-pill px-3">Edit</a>
